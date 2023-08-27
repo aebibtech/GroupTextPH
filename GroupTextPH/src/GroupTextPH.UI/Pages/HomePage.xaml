@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="GroupTextPH.UI.Pages.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GroupTextPH.UI.Pages"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:GroupTextPH.Core.ViewModels.Home;assembly=GroupTextPH.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="Group Text PH"
+    x:TypeArguments="viewModels:HomeViewModel">
+    <views:MvxContentPage.ToolbarItems>
+        <ToolbarItem Text="NEW" mvx:Bi.nd="Command NavigateCommand"/>
+    </views:MvxContentPage.ToolbarItems>
+</views:MvxContentPage>

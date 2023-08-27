@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="GroupTextPH.UI.Pages.NewMessagePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GroupTextPH.UI.Pages"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:GroupTextPH.Core.ViewModels.Message;assembly=GroupTextPH.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="New Message"
+    x:TypeArguments="viewModels:MessageViewModel">
+    <views:MvxContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Label x:Name="ToLabel"
+                   Text="To:"/>
+            <Editor x:Name="RecipientsInput"
+                       mvx:Bi.nd="Text Recipients, Mode=TwoWay"
+                       Placeholder="Recipients"
+                    Keyboard="Text"/>
+            <StackLayout Orientation="Horizontal">
+                <Editor x:Name="MessageInput"
+                           mvx:Bi.nd="Text Message, Mode=TwoWay"
+                           Placeholder="Type your message here"/>
+                <Button x:Name="SendButton"
+                        Text="SEND"/>
+            </StackLayout>
+        </StackLayout>
+    </views:MvxContentPage.Content>
+</views:MvxContentPage>
