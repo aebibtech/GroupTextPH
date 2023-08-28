@@ -38,7 +38,10 @@ namespace GroupTextPH.Core.ViewModels.Message
             await Task.Delay(1500);
             Notification = "";
             await RaisePropertyChanged(nameof(Notification));
-            await _navigationService.Navigate<HomeViewModel>();
+            if (sendResult)
+            {
+                await _navigationService.Navigate<HomeViewModel>();
+            }
         }
 
         public IMvxAsyncCommand SendMessage { get; private set; }
