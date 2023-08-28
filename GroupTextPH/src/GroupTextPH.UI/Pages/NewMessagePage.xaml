@@ -12,15 +12,21 @@
     <views:MvxContentPage.Content>
         <StackLayout Orientation="Vertical">
             <Label x:Name="ToLabel"
-                   Text="To:"/>
+                   Text="To:"
+                   FontSize="Large"
+                   Margin="10"/>
             <Editor x:Name="RecipientsInput"
-                       mvx:Bi.nd="Text Recipients, Mode=TwoWay"
-                       Placeholder="Recipients"
-                    Keyboard="Telephone"/>
-            <StackLayout Orientation="Horizontal">
+                    mvx:Bi.nd="Text Recipients, Mode=TwoWay"
+                    Placeholder="Recipients"
+                    Keyboard="Telephone"
+                    Margin="10"/>
+            <StackLayout Orientation="Horizontal" Margin="10">
                 <Editor x:Name="MessageInput"
-                           mvx:Bi.nd="Text Message, Mode=TwoWay"
-                           Placeholder="Type your message here"/>
+                        mvx:Bi.nd="Text Message, Mode=TwoWay"
+                        Placeholder="Type your message here"
+                        MaxLength="160"
+                        HeightRequest="75"
+                        WidthRequest="280"/>
                 <Button x:Name="SendButton"
                         Text="SEND"
                         mvx:Bi.nd="IsEnabled !IsSending; Command SendMessage, Mode=TwoWay"/>
