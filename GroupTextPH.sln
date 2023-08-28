@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupTextPH.Core", "GroupTextPH\src\GroupTextPH.Core\GroupTextPH.Core.csproj", "{28F9D902-7171-43FE-ACFC-E3755FD71C93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupTextPH.Core", "GroupTextPH\src\GroupTextPH.Core\GroupTextPH.Core.csproj", "{28F9D902-7171-43FE-ACFC-E3755FD71C93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupTextPH.UI", "GroupTextPH\src\GroupTextPH.UI\GroupTextPH.UI.csproj", "{3A4E50DC-C20E-4291-9FC0-1AE033C93A26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupTextPH.UI", "GroupTextPH\src\GroupTextPH.UI\GroupTextPH.UI.csproj", "{3A4E50DC-C20E-4291-9FC0-1AE033C93A26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupTextPH.Droid", "GroupTextPH\src\GroupTextPH.Droid\GroupTextPH.Droid.csproj", "{5B38DBE8-F7D9-4C0E-9699-EB9707DA15EF}"
 EndProject

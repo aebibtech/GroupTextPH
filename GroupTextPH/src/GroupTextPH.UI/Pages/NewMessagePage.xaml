@@ -24,6 +24,7 @@
                             Keyboard="Telephone"/>
                 </StackLayout>
             </Frame>
+            <Label x:Name="NotificationLabel" Margin="10" FontAttributes="Italic" FontSize="Medium" mvx:Bi.nd="Text Notification, Mode=TwoWay"/>
             <Frame Margin="10" CornerRadius="6" HasShadow="True">
                 <StackLayout Orientation="Horizontal">
                     <Editor x:Name="MessageInput"

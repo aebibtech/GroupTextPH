@@ -17,18 +17,35 @@ namespace GroupTextPH.Core.ViewModels.Message
             _smsService = smsService;
             Initialize();
             SendMessage = new MvxAsyncCommand(SendMsgAsync);
+            Notification = "";
         }
 
         public async Task SendMsgAsync()
         {
             IsSending = true;
             await RaisePropertyChanged(nameof(IsSending));
-            await _smsService.SendSms(Message, Recipients);
+            Notification = "Sending message";
+            await RaisePropertyChanged(nameof(Notification));
+            var sendResult = await _smsService.SendSms(Message, Recipients);
             IsSending = false;
             await RaisePropertyChanged(nameof(IsSending));
+            Notification = sendResult ? "Message sent successfully!" : "Failed to send message";
+            await RaisePropertyChanged(nameof(Notification));
+            await Task.Delay(1500);
+            Notification = "";
+            await RaisePropertyChanged(nameof(Notification));
         }
 
         public IMvxAsyncCommand SendMessage { get; private set; }
+
+        private string _notification;
+        public string Notification {
+            get => _notification ?? "";
+            set {
+                _notification = value;
+                RaisePropertyChanged(nameof(Notification));
+            }
+        }
 
         public bool IsSending { get; set; } = false;
 
