@@ -14,7 +14,7 @@ namespace GroupTextPH.Core.ViewModels.Home
         public HomeViewModel(IMvxNavigationService navigationService)
         {
             _navigationService = navigationService;
-            NavigateCommand = new MvxAsyncCommand(() => _navigationService.Navigate<MessageViewModel>());
+            NavigateCommand = new MvxAsyncCommand(() => _navigationService.Navigate<MessageViewModel>(), null, true);
         }
 
         public IMvxAsyncCommand NavigateCommand { get; private set; }

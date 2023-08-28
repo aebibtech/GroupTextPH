@@ -12,7 +12,6 @@ using Xamarin.Forms.Xaml;
 namespace GroupTextPH.UI.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [MvxContentPagePresentation(WrapInNavigationPage = true)]
     public partial class NewMessagePage : MvxContentPage<MessageViewModel>
     {
         public NewMessagePage()
