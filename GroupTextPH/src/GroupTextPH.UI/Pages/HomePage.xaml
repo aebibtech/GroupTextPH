@@ -12,4 +12,15 @@
     <views:MvxContentPage.ToolbarItems>
         <ToolbarItem Text="NEW" mvx:Bi.nd="Command NavigateCommand"/>
     </views:MvxContentPage.ToolbarItems>
+    <views:MvxContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <Label Text="No messages yet. Tap NEW to send a message."
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   Padding="20"
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </views:MvxContentPage.Content>
 </views:MvxContentPage>

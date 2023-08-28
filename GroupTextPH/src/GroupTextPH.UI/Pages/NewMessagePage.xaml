@@ -10,27 +10,33 @@
     Title="New Message"
     x:TypeArguments="viewModels:MessageViewModel">
     <views:MvxContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <Label x:Name="ToLabel"
-                   Text="To:"
-                   FontSize="Large"
-                   Margin="10"/>
-            <Editor x:Name="RecipientsInput"
-                    mvx:Bi.nd="Text Recipients, Mode=TwoWay"
-                    Placeholder="Recipients"
-                    Keyboard="Telephone"
-                    Margin="10"/>
-            <StackLayout Orientation="Horizontal" Margin="10">
-                <Editor x:Name="MessageInput"
+        <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
+            <Frame Margin="10, 10, 10, 450" CornerRadius="6" HasShadow="True">
+                <StackLayout>
+                    <Label  x:Name="ToLabel"
+                            Text="SEND TO:"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Margin="10"/>
+                    <Editor x:Name="RecipientsInput"
+                            mvx:Bi.nd="Text Recipients, Mode=TwoWay"
+                            Placeholder="Recipients"
+                            Keyboard="Telephone"/>
+                </StackLayout>
+            </Frame>
+            <Frame Margin="10" CornerRadius="6" HasShadow="True">
+                <StackLayout Orientation="Horizontal">
+                    <Editor x:Name="MessageInput"
                         mvx:Bi.nd="Text Message, Mode=TwoWay"
                         Placeholder="Type your message here"
                         MaxLength="160"
-                        HeightRequest="75"
-                        WidthRequest="280"/>
-                <Button x:Name="SendButton"
+                        WidthRequest="240"
+                        HeightRequest="75"/>
+                    <Button x:Name="SendButton"
                         Text="SEND"
                         mvx:Bi.nd="IsEnabled !IsSending; Command SendMessage, Mode=TwoWay"/>
-            </StackLayout>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>
