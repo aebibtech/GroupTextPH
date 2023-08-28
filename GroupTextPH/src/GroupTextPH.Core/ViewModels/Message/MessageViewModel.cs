@@ -40,7 +40,7 @@ namespace GroupTextPH.Core.ViewModels.Message
             await RaisePropertyChanged(nameof(Notification));
             if (sendResult)
             {
-                await _navigationService.Navigate<HomeViewModel>();
+                await _navigationService.Close(this);
             }
         }
 
