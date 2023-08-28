@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using GroupTextPH.Core.Services;
+using GroupTextPH.Core.ViewModels.Home;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
 namespace GroupTextPH.Core.ViewModels.Message
@@ -11,10 +13,12 @@ namespace GroupTextPH.Core.ViewModels.Message
     public class MessageViewModel : MvxViewModel
     {
         private readonly ISmsServiceA _smsService;
+        private readonly IMvxNavigationService _navigationService;
 
-        public MessageViewModel(ISmsServiceA smsService)
+        public MessageViewModel(ISmsServiceA smsService, IMvxNavigationService navigationService)
         {
             _smsService = smsService;
+            _navigationService = navigationService;
             Initialize();
             SendMessage = new MvxAsyncCommand(SendMsgAsync);
             Notification = "";
@@ -34,6 +38,7 @@ namespace GroupTextPH.Core.ViewModels.Message
             await Task.Delay(1500);
             Notification = "";
             await RaisePropertyChanged(nameof(Notification));
+            await _navigationService.Navigate<HomeViewModel>();
         }
 
         public IMvxAsyncCommand SendMessage { get; private set; }
