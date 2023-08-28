@@ -1,4 +1,6 @@
+using GroupTextPH.Core.Services;
 using GroupTextPH.Core.ViewModels.Home;
+using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 
@@ -8,6 +10,8 @@ namespace GroupTextPH.Core
     {
         public override void Initialize()
         {
+            Mvx.IoCProvider.RegisterType<ISmsServiceA, SmsServiceA>();
+
             RegisterAppStart<HomeViewModel>();
         }
     }

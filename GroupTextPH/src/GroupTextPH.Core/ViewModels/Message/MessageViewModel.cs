@@ -1,16 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GroupTextPH.Core.Services;
+using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
 namespace GroupTextPH.Core.ViewModels.Message
 {
     public class MessageViewModel : MvxViewModel
     {
-        public MessageViewModel()
+        private readonly ISmsServiceA _smsService;
+
+        public MessageViewModel(ISmsServiceA smsService)
         {
+            _smsService = smsService;
             Initialize();
+            
         }
+
+        public IMvxAsyncCommand SendMessage { get; private set; }
 
         public int _id = 0;
         public int Id
