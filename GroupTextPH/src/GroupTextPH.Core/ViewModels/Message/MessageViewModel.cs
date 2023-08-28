@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using GroupTextPH.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
@@ -15,10 +16,21 @@ namespace GroupTextPH.Core.ViewModels.Message
         {
             _smsService = smsService;
             Initialize();
-            
+            SendMessage = new MvxAsyncCommand(SendMsgAsync);
+        }
+
+        public async Task SendMsgAsync()
+        {
+            IsSending = true;
+            await RaisePropertyChanged(nameof(IsSending));
+            await _smsService.SendSms(Message, Recipients);
+            IsSending = false;
+            await RaisePropertyChanged(nameof(IsSending));
         }
 
         public IMvxAsyncCommand SendMessage { get; private set; }
+
+        public bool IsSending { get; set; } = false;
 
         public int _id = 0;
         public int Id

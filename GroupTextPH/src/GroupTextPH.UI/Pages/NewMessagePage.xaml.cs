@@ -8,6 +8,7 @@ using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Messaging;
 
 namespace GroupTextPH.UI.Pages
 {

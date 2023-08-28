@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
+using Plugin.Messaging;
 
 namespace GroupTextPH.Core.Services
 {
@@ -13,19 +13,22 @@ namespace GroupTextPH.Core.Services
         {
             try
             {
-                var recipientsArray = recipients.Split(',');
-                foreach (var number in recipientsArray)
+                if (string.IsNullOrEmpty(recipients) || string.IsNullOrEmpty(message))
                 {
-                    var sms = new SmsMessage(message, number);
-                    await Sms.ComposeAsync(sms);
-                    await Task.Delay(2000);
+                    return false;
+                }
+
+                var recipientsArray = recipients.Split(',');
+
+                if (CrossMessaging.Current.SmsMessenger.CanSendSmsInBackground)
+                {
+                    foreach (var recipient in recipientsArray)
+                    {
+                        CrossMessaging.Current.SmsMessenger.SendSmsInBackground(recipient, message);
+                        await Task.Delay(3000);
+                    }
                 }
                 return true;
-            }
-            catch (FeatureNotSupportedException ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
             }
             catch (Exception ex)
             {

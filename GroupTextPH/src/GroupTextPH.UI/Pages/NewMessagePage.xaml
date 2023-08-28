@@ -16,13 +16,14 @@
             <Editor x:Name="RecipientsInput"
                        mvx:Bi.nd="Text Recipients, Mode=TwoWay"
                        Placeholder="Recipients"
-                    Keyboard="Text"/>
+                    Keyboard="Telephone"/>
             <StackLayout Orientation="Horizontal">
                 <Editor x:Name="MessageInput"
                            mvx:Bi.nd="Text Message, Mode=TwoWay"
                            Placeholder="Type your message here"/>
                 <Button x:Name="SendButton"
-                        Text="SEND"/>
+                        Text="SEND"
+                        mvx:Bi.nd="IsEnabled !IsSending; Command SendMessage, Mode=TwoWay"/>
             </StackLayout>
         </StackLayout>
     </views:MvxContentPage.Content>
