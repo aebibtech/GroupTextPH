@@ -12,7 +12,7 @@ namespace GroupTextPH.Core.Models
         public string Content { get; set; }
         public string Recipients { get; set; }
         public string Status { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; }
     }
 }
