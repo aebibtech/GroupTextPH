@@ -17,12 +17,7 @@
             <views:MvxListView mvx:Bi.nd="ItemsSource Messages; IsVisible !IsEmptyMessageVisible">
                 <views:MvxListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical" Margin="10">
-                                <Label Text="{Binding UpdatedAt}" />
-                                <Label Text="{Binding Content}"/>
-                            </StackLayout>
-                        </ViewCell>
+                        <views:MvxTextCell Text="{Binding UpdatedAt}" Detail="{Binding Content}"/>
                     </DataTemplate>
                 </views:MvxListView.ItemTemplate>
             </views:MvxListView>
