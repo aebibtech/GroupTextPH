@@ -11,6 +11,7 @@ namespace GroupTextPH.Core
         public override void Initialize()
         {
             Mvx.IoCProvider.RegisterType<ISmsServiceA, SmsServiceA>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDatabaseServiceA, DatabaseServiceA>();
 
             RegisterAppStart<HomeViewModel>();
         }

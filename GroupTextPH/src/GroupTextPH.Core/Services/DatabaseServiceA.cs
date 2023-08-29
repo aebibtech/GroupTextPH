@@ -10,11 +10,24 @@ namespace GroupTextPH.Core.Services
 {
     public class DatabaseServiceA : IDatabaseServiceA
     {
-        private readonly SQLiteAsyncConnection _db;
+        private const string Filename = "grouptextph.sqlite3";
+        private SQLiteAsyncConnection _db;
+
         public DatabaseServiceA()
         {
-            _db = new SQLiteAsyncConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "grouptextph.db3"));
+            GetAsyncConnection();
             _db.CreateTablesAsync<Message, Settings>().Wait();
+        }
+
+        public SQLiteAsyncConnection GetAsyncConnection()
+        {
+            if (_db == null)
+            {
+                var dbFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                var dbFilePath = Path.Combine(dbFolder, Filename);
+                _db = new SQLiteAsyncConnection(dbFilePath);
+            }
+            return _db;
         }
 
         public async Task<int> DeleteMessageAsync(int id)

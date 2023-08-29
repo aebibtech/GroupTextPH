@@ -20,7 +20,8 @@
                    FontSize="Medium"
                    FontAttributes="Bold"
                    Padding="20"
-                   HorizontalTextAlignment="Center"/>
+                   HorizontalTextAlignment="Center"
+                   mvx:Bi.nd="IsVisible IsEmptyMessageVisible, Mode=TwoWay"/>
         </StackLayout>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>
