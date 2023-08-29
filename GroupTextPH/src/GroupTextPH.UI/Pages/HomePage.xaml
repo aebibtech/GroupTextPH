@@ -14,13 +14,21 @@
     </views:MvxContentPage.ToolbarItems>
     <views:MvxContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
+            <views:MvxListView mvx:Bi.nd="ItemsSource Messages; IsVisible !IsEmptyMessageVisible">
+                <views:MvxListView.ItemTemplate>
+                    <DataTemplate>
+                        <views:MvxTextCell Text="{Binding UpdatedAt}" Detail="{Binding Content}"/>
+                    </DataTemplate>
+                </views:MvxListView.ItemTemplate>
+            </views:MvxListView>
             <Label Text="No messages yet. Tap NEW to send a message."
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    FontSize="Medium"
                    FontAttributes="Bold"
                    Padding="20"
-                   HorizontalTextAlignment="Center"/>
+                   HorizontalTextAlignment="Center"
+                   mvx:Bi.nd="IsVisible IsEmptyMessageVisible, Mode=TwoWay"/>
         </StackLayout>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

@@ -14,11 +14,13 @@ namespace GroupTextPH.Core.ViewModels.Message
     {
         private readonly ISmsServiceA _smsService;
         private readonly IMvxNavigationService _navigationService;
+        private readonly IDatabaseServiceA _dbService;
 
-        public MessageViewModel(ISmsServiceA smsService, IMvxNavigationService navigationService)
+        public MessageViewModel(ISmsServiceA smsService, IMvxNavigationService navigationService, IDatabaseServiceA dbService)
         {
             _smsService = smsService;
             _navigationService = navigationService;
+            _dbService = dbService;
             Initialize();
             SendMessage = new MvxAsyncCommand(SendMsgAsync);
             Notification = "";
@@ -26,21 +28,43 @@ namespace GroupTextPH.Core.ViewModels.Message
 
         public async Task SendMsgAsync()
         {
+            var message = new Models.Message
+            {
+                Content = Message,
+                Recipients = Recipients,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            };
+
+            Console.WriteLine(message.Content);
+
             IsSending = true;
             await RaisePropertyChanged(nameof(IsSending));
+
             Notification = "Sending message";
             await RaisePropertyChanged(nameof(Notification));
+
             var sendResult = await _smsService.SendSms(Message, Recipients);
+
+            message.Status = sendResult ? "Sent" : "Failed";
+
+            await _dbService.SaveMessageAsync(message);
+
             IsSending = false;
             await RaisePropertyChanged(nameof(IsSending));
+
             Notification = sendResult ? "Message sent successfully!" : "Failed to send message";
             await RaisePropertyChanged(nameof(Notification));
+
             await Task.Delay(1500);
+
             Notification = "";
             await RaisePropertyChanged(nameof(Notification));
+
             if (sendResult)
             {
-                await _navigationService.Close(this);
+                //await _navigationService.Close(this);
+                await _navigationService.Navigate<HomeViewModel>();
             }
         }
 
